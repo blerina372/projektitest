@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+
+    <div class="container">
+        <form id="signupForm">
+            <h2>Create Account</h2>
+
+            <input type="text" id="fullname" placeholder="Full Name">
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <input type="password" id="confirmPassword" placeholder="Confirm Password">
+
+            <button type="submit">Sign Up</button>
+
+            <p>Already have an account? <a href="login.html">Log in</a></p>
+
+            <p class="error" id="errorMsg"></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let name = document.getElementById("fullname").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let pass = document.getElementById("password").value.trim();
+    let cpass = document.getElementById("confirmPassword").value.trim();
+    let msg = document.getElementById("errorMsg");
+
+    if(name === "" || email === "" || pass === "" || cpass === ""){
+        msg.textContent = "Please fill all fields!";
+        return;
+    }
+
+    if(pass !== cpass){
+        msg.textContent = "Passwords do not match!";
+        return;
+    }
+
+    msg.style.color = "green";
+    msg.textContent = "Account created successfully!";
+
+    window.location.href = "login.html";
+
+});
+    </script>
+</body>
+</html>
